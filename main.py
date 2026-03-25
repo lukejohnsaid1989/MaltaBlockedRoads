@@ -53,7 +53,7 @@ scatter_layer = pdk.Layer(
     data=df_filtered,
     get_position='[lon, lat]',
     get_fill_color='[255, 0, 0, 80]',  # semi-transparent red
-    get_radius=15,
+    get_radius=40,
     pickable=True
 )
 
