@@ -31,8 +31,8 @@ layer = pdk.Layer(
     "ScatterplotLayer",
     data=df_filtered,
     get_position='[lon, lat]',
-    get_color='[255, 0, 0]',
-    get_radius=20,  # smaller radius
+    get_color='[255, 0, 0, 80]',  # semi-transparent red
+    get_radius=20,  # radius in meters
     pickable=True
 )
 
