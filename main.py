@@ -25,8 +25,8 @@ selected_dates = st.sidebar.multiselect(
 
 selected_localities = st.sidebar.multiselect(
     "Select Localities",
-    options=df['Locality'].unique(),
-    default=df['Locality'].unique()
+    options=df['locality'].unique(),
+    default=df['locality'].unique()
 )
 
 # --- Filter DataFrame ---
