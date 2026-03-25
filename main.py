@@ -24,6 +24,8 @@ selected_dates = st.sidebar.multiselect(
     default=df['date'].dt.date.unique()
 )
 
+st.dataframe(df)
+
 # Filter the DataFrame
 df_filtered = df[df['date'].dt.date.isin(selected_dates)]
 
