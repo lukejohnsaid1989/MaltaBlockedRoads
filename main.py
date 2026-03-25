@@ -16,6 +16,8 @@ def load_data(url):
 
 df = load_data(DATA_URL)
 
+st.write(df.columns)
+
 # --- Sidebar Date Filter ---
 selected_dates = st.sidebar.multiselect(
     "Select Date(s) of Closures",
