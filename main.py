@@ -30,12 +30,12 @@ selected_dates = st.sidebar.multiselect(
 df_filtered = df[df['date'].dt.date.isin(selected_dates)].copy()
 
 explanation_text = [
-    "This is not an official government website. It is a personal project intended to visualize closed roads.",
+    "This is not an official government website. It is a personal project intended to visualize closed roads. ",
     "Road closure information is copied from: https://pulizija.gov.mt/en/general-notices/ ",
-    "Latitude and longitude are extracted from: https://nominatim.openstreetmap.org/search.",
-    "There is no official guarantee that the information is accurate. It is generated through a Python automation process based on the copied data.",
-    "No AI is used in the processing.",
-    "No automated data scraping is used."
+    "Latitude and longitude are extracted from: https://nominatim.openstreetmap.org/search. ",
+    "There is no official guarantee that the information is accurate. It is generated through a Python automation process based on the copied data. ",
+    "No AI is used in the processing. ",
+    "No automated data scraping is used. "
 ]
 
 # --- Village Zoom Selector ---
