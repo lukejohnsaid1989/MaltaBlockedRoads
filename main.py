@@ -17,7 +17,7 @@ def load_data(url):
 df = load_data(DATA_URL)
 
 latest_update = df['latest_update'].max()
-st.write(f"Data last updated: {latest_update}. This is not official information")
+st.write(f"Data last updated: {latest_update}. This is not official information.")
 
 # --- Sidebar Date Filter ---
 selected_dates = st.sidebar.multiselect(
