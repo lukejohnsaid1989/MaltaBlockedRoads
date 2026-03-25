@@ -16,24 +16,15 @@ def load_data(url):
 
 df = load_data(DATA_URL)
 
-# --- Sidebar Filters ---
+# --- Sidebar Date Filter ---
 selected_dates = st.sidebar.multiselect(
     "Select Date(s) of Closures",
     options=df['date'].dt.date.unique(),
     default=df['date'].dt.date.unique()
 )
 
-selected_localities = st.sidebar.multiselect(
-    "Select Localities",
-    options=df['locality'].unique(),
-    default=df['locality'].unique()
-)
-
-# Filter DataFrame
-df_filtered = df[
-    df['date'].dt.date.isin(selected_dates) &
-    df['locality'].isin(selected_localities)
-].copy()
+# Filter DataFrame by selected dates
+df_filtered = df[df['date'].dt.date.isin(selected_dates)].copy()
 
 st.subheader(f"Showing {len(df_filtered)} closed roads")
 
@@ -46,7 +37,7 @@ if selected_village != 'All':
     if not village_data.empty:
         center_lat = village_data['lat'].mean()
         center_lon = village_data['lon'].mean()
-        zoom_level = 13  # closer zoom
+        zoom_level = 13
     else:
         center_lat = 35.8997
         center_lon = 14.5146
@@ -56,7 +47,7 @@ else:
     center_lon = 14.5146
     zoom_level = 11
 
-# --- PyDeck Layers ---
+# --- PyDeck Layer (semi-transparent circles only) ---
 scatter_layer = pdk.Layer(
     "ScatterplotLayer",
     data=df_filtered,
@@ -64,18 +55,6 @@ scatter_layer = pdk.Layer(
     get_fill_color='[255, 0, 0, 80]',  # semi-transparent red
     get_radius=15,
     pickable=True
-)
-
-text_layer = pdk.Layer(
-    "TextLayer",
-    data=df_filtered,
-    get_position='[lon, lat]',
-    get_text='street',  # corrected column
-    get_size=16,
-    get_color=[0, 0, 0],
-    get_angle=0,
-    get_text_anchor='"middle"',
-    get_alignment_baseline='"bottom"'
 )
 
 view_state = pdk.ViewState(
@@ -86,7 +65,7 @@ view_state = pdk.ViewState(
 )
 
 deck = pdk.Deck(
-    layers=[scatter_layer, text_layer],
+    layers=[scatter_layer],
     initial_view_state=view_state,
     tooltip={
         "html": "<b>Street:</b> {street} <br/> <b>Locality:</b> {locality} <br/> <b>Date:</b> {date_str}"
