@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import pydeck as pdk
 
-st.title("🚧 Malta Road Closures / Tow Zone Map")
+st.subheader("🚧 Malta Road Closures / Tow Zone Map")
 
 # --- Data ---
 DATA_URL = "https://drive.google.com/uc?export=download&id=1ELRtKbteqWXh8GeYE4iysxQcSIJP9l_2"
@@ -28,8 +28,6 @@ selected_dates = st.sidebar.multiselect(
 
 # Filter DataFrame by selected dates
 df_filtered = df[df['date'].dt.date.isin(selected_dates)].copy()
-
-st.subheader(f"Showing {len(df_filtered)} closed roads")
 
 explanation_text = [
     "This is not an official government website. It is a personal project intended to visualize closed roads.",
