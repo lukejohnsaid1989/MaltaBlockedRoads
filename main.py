@@ -30,10 +30,14 @@ selected_dates = st.sidebar.multiselect(
 df_filtered = df[df['date'].dt.date.isin(selected_dates)].copy()
 
 st.subheader(f"Showing {len(df_filtered)} closed roads")
-st.write(f"This is not an official government website. It is a personal project with the intent of visualising closed roads.")
-st.write(f"Road closure information is copied and pasted from here: https://pulizija.gov.mt/en/general-notices/")
-st.write(f"Latitude and Lognitude are exracted from here: https://nominatim.openstreetmap.org/search.")
-st.write(f"There is no official guarantee that the information here is accurate. It is the result of a python automation that processes the copied information.")
+
+explanation_text = [
+"This is not an official government website. It is a personal project with the intent of visualising closed roads.",
+"Road closure information is copied and pasted from here: https://pulizija.gov.mt/en/general-notices/",
+"Latitude and Lognitude are exracted from here: https://nominatim.openstreetmap.org/search."
+"There is no official guarantee that the information here is accurate. It is the result of a python automation that processes the copied information.",
+"No AI is used in the processing.", "No data automated scraping is used."
+]
 
 # --- Village Zoom Selector ---
 village_options = ['All'] + list(df['locality'].unique())
@@ -82,3 +86,4 @@ deck = pdk.Deck(
 )
 
 st.pydeck_chart(deck, use_container_width=True)
+st.write(" ".join(explanation_text))
