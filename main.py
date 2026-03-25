@@ -2,7 +2,8 @@ import streamlit as st
 import pandas as pd
 import pydeck as pdk
 
-st.title("🚧 Malta Road Closures Map")
+st.title("🚧 Malta Road Closures / Tow Zone Map")
+st.write("This is not official information")
 
 # --- Data ---
 DATA_URL = "https://drive.google.com/uc?export=download&id=1ELRtKbteqWXh8GeYE4iysxQcSIJP9l_2"
@@ -32,11 +33,12 @@ df_filtered = df[df['date'].dt.date.isin(selected_dates)].copy()
 st.subheader(f"Showing {len(df_filtered)} closed roads")
 
 explanation_text = [
-"This is not an official government website. It is a personal project with the intent of visualising closed roads. ",
-"Road closure information is copied and pasted from here: https://pulizija.gov.mt/en/general-notices/ ",
-"Latitude and Lognitude are exracted from here: https://nominatim.openstreetmap.org/search. "
-"There is no official guarantee that the information here is accurate. It is the result of a python automation that processes the copied information. ",
-"No AI is used in the processing.", "No data automated scraping is used."
+    "This is not an official government website. It is a personal project intended to visualize closed roads.",
+    "Road closure information is copied from: https://pulizija.gov.mt/en/general-notices/",
+    "Latitude and longitude are extracted from: https://nominatim.openstreetmap.org/search.",
+    "There is no official guarantee that the information is accurate. It is generated through a Python automation process based on the copied data.",
+    "No AI is used in the processing.",
+    "No automated data scraping is used."
 ]
 
 # --- Village Zoom Selector ---
