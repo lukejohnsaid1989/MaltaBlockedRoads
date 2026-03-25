@@ -3,7 +3,6 @@ import pandas as pd
 import pydeck as pdk
 
 st.title("🚧 Malta Road Closures / Tow Zone Map")
-st.write("This is not official information")
 
 # --- Data ---
 DATA_URL = "https://drive.google.com/uc?export=download&id=1ELRtKbteqWXh8GeYE4iysxQcSIJP9l_2"
@@ -18,7 +17,7 @@ def load_data(url):
 df = load_data(DATA_URL)
 
 latest_update = df['latest_update'].max()
-st.write(f"Data last updated: {latest_update}")
+st.write(f"Data last updated: {latest_update}. This is not official information")
 
 # --- Sidebar Date Filter ---
 selected_dates = st.sidebar.multiselect(
