@@ -71,7 +71,7 @@ deck = pdk.Deck(
         "html": "<b>Street:</b> {street} <br/> <b>Locality:</b> {locality} <br/> <b>Date:</b> {date_str}"
     },
     height=700,
-    map_style='mapbox://styles/mapbox/light-v10'
+    map_style=None
 )
 
 st.pydeck_chart(deck, use_container_width=True)
