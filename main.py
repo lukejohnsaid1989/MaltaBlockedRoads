@@ -5,7 +5,7 @@ import pydeck as pdk
 st.title("🚧 Malta Road Closures Map")
 
 # --- Google Drive CSV URL ---
-DATA_URL = "https://drive.google.com/uc?export=download&id=1mU9wEJBrUMidZmeVkXtIPVYL6WCDQp9q"
+DATA_URL = "https://drive.google.com/uc?export=download&id=1ELRtKbteqWXh8GeYE4iysxQcSIJP9l_2"
 
 # --- Load Data with caching ---
 @st.cache_data(ttl=300)  # cache for 5 minutes
