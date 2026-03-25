@@ -24,13 +24,10 @@ selected_dates = st.sidebar.multiselect(
     default=df['date'].dt.date.unique()
 )
 
-st.dataframe(df)
-
 # Filter the DataFrame
 df_filtered = df[df['date'].dt.date.isin(selected_dates)]
 
 st.subheader(f"Showing {len(df_filtered)} closed roads")
-st.dataframe(df_filtered[['date', 'locality', 'street']])
 
 # --- PyDeck Interactive Map ---
 layer = pdk.Layer(
