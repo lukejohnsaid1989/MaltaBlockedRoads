@@ -24,7 +24,6 @@ selected_dates = st.sidebar.multiselect(
 df_filtered = df[df['date'].dt.date.isin(selected_dates)]
 
 st.subheader(f"Showing {len(df_filtered)} closed roads")
-st.dataframe(df_filtered[['date', 'Locality', 'street name', 'lat', 'lon']])
 
 # --- PyDeck Map ---
 layer = pdk.Layer(
@@ -48,7 +47,7 @@ r = pdk.Deck(
     layers=[layer],
     initial_view_state=view_state,
     tooltip={
-        "html": "<b>Street:</b> {street name} <br/> <b>Locality:</b> {Locality} <br/> <b>Date:</b> {date}"
+        "html": "<b>Street:</b> {street} <br/> <b>Locality:</b> {locality} <br/> <b>Date:</b> {date}"
     }
 )
 
