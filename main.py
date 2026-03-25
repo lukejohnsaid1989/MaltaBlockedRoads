@@ -16,7 +16,8 @@ def load_data(url):
 
 df = load_data(DATA_URL)
 
-st.write(df.columns)
+latest_update = df['latest_update'].max()
+st.write(f"Data last updated: {latest_update}")
 
 # --- Sidebar Date Filter ---
 selected_dates = st.sidebar.multiselect(
@@ -29,6 +30,10 @@ selected_dates = st.sidebar.multiselect(
 df_filtered = df[df['date'].dt.date.isin(selected_dates)].copy()
 
 st.subheader(f"Showing {len(df_filtered)} closed roads")
+st.write(f"This is not an official government website. It is a personal project with the intent of visualising closed roads.")
+st.write(f"Road closure information is copied and pasted from here: https://pulizija.gov.mt/en/general-notices/")
+st.write(f"Latitude and Lognitude are exracted from here: https://nominatim.openstreetmap.org/search.")
+st.write(f"There is no official guarantee that the information here is accurate. It is the result of a python automation that processes the copied information.")
 
 # --- Village Zoom Selector ---
 village_options = ['All'] + list(df['locality'].unique())
