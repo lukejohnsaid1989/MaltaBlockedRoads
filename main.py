@@ -32,7 +32,7 @@ selected_localities = st.sidebar.multiselect(
 # --- Filter DataFrame ---
 df_filtered = df[
     df['date'].dt.date.isin(selected_dates) &
-    df['Locality'].isin(selected_localities)
+    df['locality'].isin(selected_localities)
 ].copy()
 
 st.subheader(f"Showing {len(df_filtered)} closed roads")
@@ -74,7 +74,7 @@ deck = pdk.Deck(
     layers=[scatter_layer, text_layer],
     initial_view_state=view_state,
     tooltip={
-        "html": "<b>Street:</b> {street name} <br/> <b>Locality:</b> {Locality} <br/> <b>Date:</b> {date_str}"
+        "html": "<b>Street:</b> {street} <br/> <b>Locality:</b> {locality} <br/> <b>Date:</b> {date_str}"
     },
     map_style='mapbox://styles/mapbox/light-v10',  # cleaner style
     height=700  # bigger map
