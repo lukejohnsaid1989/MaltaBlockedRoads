@@ -13,7 +13,7 @@ def load_data(url):
     return df
 
 df = load_data(DATA_URL)
-df_filtered['date_str'] = df_filtered['date'].dt.strftime('%Y-%m-%d')
+df['date_str'] = df['date'].dt.strftime('%Y-%m-%d')
 
 # --- Sidebar Date Filter ---
 selected_dates = st.sidebar.multiselect(
