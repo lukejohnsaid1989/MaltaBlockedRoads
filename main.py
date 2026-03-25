@@ -30,7 +30,7 @@ st.dataframe(df)
 df_filtered = df[df['date'].dt.date.isin(selected_dates)]
 
 st.subheader(f"Showing {len(df_filtered)} closed roads")
-st.dataframe(df_filtered[['date', 'Locality', 'street name', 'lat', 'lon']])
+st.dataframe(df_filtered[['date', 'locality', 'street']])
 
 # --- PyDeck Interactive Map ---
 layer = pdk.Layer(
