@@ -82,6 +82,3 @@ deck = pdk.Deck(
 
 st.pydeck_chart(deck, use_container_width=True)
 
-# --- Optional: Data Table ---
-st.subheader("Details Table")
-st.dataframe(df_filtered[['date_str', 'Locality', 'street name', 'lat', 'lon']])
