@@ -13,6 +13,7 @@ def load_data(url):
     return df
 
 df = load_data(DATA_URL)
+df_filtered['date_str'] = df_filtered['date'].dt.strftime('%Y-%m-%d')
 
 # --- Sidebar Date Filter ---
 selected_dates = st.sidebar.multiselect(
@@ -47,7 +48,7 @@ r = pdk.Deck(
     layers=[layer],
     initial_view_state=view_state,
     tooltip={
-        "html": "<b>Street:</b> {street} <br/> <b>Locality:</b> {locality} <br/> <b>Date:</b> {date}"
+        "html": "<b>Street:</b> {street} <br/> <b>Locality:</b> {locality} <br/> <b>Date:</b> {date_str}"
     }
 )
 
